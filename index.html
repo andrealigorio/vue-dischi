@@ -17,9 +17,16 @@
             <div class="logo">
                 <img src="img/logo.png" alt="Logo Spotify">
             </div>
+            <div class="genre_selection">
+                <span>Seleziona genere</span>
+                <select name="genre" id="genre" v-model="selected">
+                    <option value="All">All</option>
+                    <option v-for="genre in genres" :value=genre>{{genre}}</option>
+                </select>
+            </div>
         </div>
         <div class="container">
-            <div v-for="(card, index) in cards" class="card">
+            <div v-if="(selected == card.genre) || selected == 'All'" v-for="card in cards" class="card">
                 <div class="poster">
                     <img :src=card.poster alt="">
                 </div>
