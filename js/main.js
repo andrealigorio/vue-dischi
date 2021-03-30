@@ -20,6 +20,9 @@ var app = new Vue({
             .get("https://flynn.boolean.careers/exercises/api/array/music")
             .then((response) => {
                 this.cards = response.data.response;
+                this.cards.sort(function(x,y) {
+                    return x.year - y.year;
+                });
                 this.genreArray();
             });
     }
